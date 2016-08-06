@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+import "any.proto";
+
+message Customer {
+	string username = 1;
+	repeated string email_addresses = 2; //field rule, field type, field name, field tag
+	enum Type {
+		REGULAR = 0;//start with zero as the default value for a enum is 0
+		MEMBER = 1;
+		SPONSOR = 2;
+	}
+	Type type = 3;
+
+	message Address {
+		string address = 1; //the default field rule is "optional"
+		string city = 2;
+		string state = 3;
+		string zip_code = 4;
+	}
+
+	Address address = 4;
+
+	//only one field can hold value, setting on field will clear the others
+	oneof access_type {
+		string email = 5;
+		string email2 = 6;
+	}
+
+	//the keys must be strings or integer types for cross-platform interoperability
+	map<string, string> my_map_example = 7;
+
+	//using Any when the content is dynamic and only known in runtime, the way to access this dynamic type varies across different languages
+	repeated google.protobuf.Any details = 8;
+}
