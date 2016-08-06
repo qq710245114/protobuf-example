@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+message Customer {
+	CustomerType type = 1;
+}
+
+enum CustomerType {
+	REGULAR = 0;
+	MEMBER = 1;
+	SPONSOR = 2;
+}
+
+//var customer = new Customer()
+//customer.setType(CustomerType.REGULAR)

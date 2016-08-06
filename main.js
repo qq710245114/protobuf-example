@@ -1,5 +1,6 @@
 var messages = require('./messages_pb');
 
+//no need to do messages.consumerdata.Customer
 var customer = new messages.Customer();
 customer.setUsername('Tony');
 customer.getEmailAddressesList().push('tony@tony.com');

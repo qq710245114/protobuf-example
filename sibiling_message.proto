@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+message Customer {
+	repeated Address addresses = 1;
+}
+
+message Address {
+	string address = 1;
+	string city = 2;
+}
+
+//customer = new Customer()
+//address = new Address()

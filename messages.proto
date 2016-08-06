@@ -2,6 +2,8 @@ syntax = "proto3";
 
 import "any.proto";
 
+package consumerdata;
+
 message Customer {
 	string username = 1;
 	repeated string email_addresses = 2; //field rule, field type, field name, field tag
