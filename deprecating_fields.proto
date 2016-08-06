@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+//deprecating "name" field in favor of first_name and last_name, protobuf compiler will complain
+//version 1
+message Foo {
+	int32 id = 1;
+	string name = 2;
+	int32 age = 3;
+}
+
+message Foo {
+	int32 id = 1;
+	string email = 6;
+	string first_name = 4;
+	string last_name = 5;
+	reserved 2, 3;//e.g. reserved 2, 3, 5 to 10;
+	reserved "name";
+}
+
+//another way to deprecate old field, Java output supports this, but JS output doesn't
+//protobuf compiler will not complain, the runtime will complain with annotation @java.lang.Deprecated
+message Foo {
+	int32 id = 1;
+	string name = 2 [deprecated = true];
+	string email = 6;
+	string first_name = 4;
+	string last_name = 5;
+}
